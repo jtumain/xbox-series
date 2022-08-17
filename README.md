@@ -5,8 +5,6 @@ In this small demo you can choose between both Xbox Series models. When you sele
 You can find the demo here (looks much better in its full glory here):
 https://codepen.io/tumain/full/poyqVeb
 
-{% codepen https://codepen.io/tumain/pen/poyqVeb %}
-
 I thought it would be interesting to cover how I created the demo and some of its visual aspects; including:
 * Cube creation
 * Transitions between models
