@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Xbox Series</title>
+    <meta name="viewport"
+        content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="main.css" rel="stylesheet">
+</head>
+
+<body class="series-s">
+
+    <div id="scene" class="scene">
+        <div id="xbox" class="cube">
+            <div class="shadow"></div>
+            <div class="top">
+                <div class="top-dots"></div>
+            </div>
+            <div class="right"></div>
+            <div class="bottom"></div>
+            <div class="left">
+                <div class="logo-wrapper">
+                    <div class="logo"></div>
+                </div>
+                <div class="button x-scale-0"></div>
+                <div class="port x-scale-0"></div>
+                <div class="disc-button s-scale-0"></div>
+                <div class="disc-tray"></div>
+            </div>
+            <div class="front">
+                <div class="circle x-scale-0">
+                    <div class="circle-dots"></div>
+                </div>
+            </div>
+            <div class="back"></div>
+        </div>
+    </div>
+
+    <div class="series-logo-wrapper">
+        <div id="seriesXBtn" class="series-logo series-logo-x">
+            <span>X</span>
+        </div>
+        <div class="series-logo-divider"></div>
+        <div id="seriesSBtn" class="series-logo series-logo-s">
+            <span>S</span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let b = document.body;
+        let xbox = document.querySelector("#xbox");
+        let seriesSBtn = document.querySelector("#seriesSBtn");
+        let seriesXBtn = document.querySelector("#seriesXBtn");
+        let initialView = -222;
+        let seriesX = {
+            height: 60.2,
+            width: 30.2,
+            depth: 30.2
+        };
+        let seriesS = {
+            height: 55,
+            width: 30.2,
+            depth: 12.6
+        };
+
+        let seriesSSelected = () => {
+            setProperties(seriesS);
+            b.classList.add('series-s');
+            b.classList.remove('series-x');
+        };
+
+        let seriesXSelected = () => {
+            setProperties(seriesX);
+            b.classList.add('series-x');
+            b.classList.remove('series-s');
+        };
+
+        let setProperties = (props) => {
+            document.documentElement.style.setProperty('--width', props.width + 'vw');
+            document.documentElement.style.setProperty('--height', props.height + 'vw');
+            document.documentElement.style.setProperty('--depth', props.depth + 'vw');
+        };
+
+        let onMouseMove = (e) => {
+            xPercent = parseInt(e.pageX / window.innerWidth * 100) - 75;
+            let view = initialView;
+            view += xPercent / 2;
+            document.documentElement.style.setProperty('--view', view + 'deg');
+        };
+        
+        let onMouseLeave = (e) => {
+            document.documentElement.style.setProperty('--view', initialView + 'deg');
+        }
+
+        seriesSBtn.addEventListener("click", seriesSSelected);
+        seriesXBtn.addEventListener("click", seriesXSelected);
+        b.addEventListener('mousemove', onMouseMove);
+        b.addEventListener('mouseleave', onMouseLeave);
+    </script>
+
+</body>
+
+</html>
